@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>peliculas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-text>
+    <h1>Cartelera</h1>
+    <ion-row>
+      @for(pelicula of peliculas; track pelicula.id) {
+        <ion-col size="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                <strong>{{pelicula.title}}</strong>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-text>
+                <p>Categoria: {{pelicula.category}}</p>
+                <p>Duración: {{pelicula.duration}}</p>
+                <h3>Alquilar por: {{pelicula.price | currency:'CLP'}}</h3>
+              </ion-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-text>
+</ion-content>
