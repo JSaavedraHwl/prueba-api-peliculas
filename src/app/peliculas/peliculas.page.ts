@@ -15,12 +15,19 @@ export class PeliculasPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.apiPeliculasService.getPeliculas()
-    .subscribe(
-      (peliculas)=>  {
-        this.peliculas = peliculas
-      }
-    )
+    const peliculasLocalStorage = localStorage.getItem('peliculas');
+    
+    if(peliculasLocalStorage !== null) {
+      this.peliculas = JSON.parse(peliculasLocalStorage) as Pelicula[];
+    }else {
+      this.apiPeliculasService.getPeliculas()
+      .subscribe(
+        (peliculas)=>  {
+          localStorage.setItem('peliculas', JSON.stringify(peliculas));
+          this.peliculas = peliculas;
+        }
+      )
+    }
   }
 
 }
