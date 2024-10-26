@@ -1,0 +1,7 @@
+{
+  "name": "prueba-api-peliculas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
